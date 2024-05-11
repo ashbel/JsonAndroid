@@ -1,13 +1,9 @@
 package com.mopanesystems.myapplication
 
-import android.content.Context
 import android.text.InputType
-import androidx.test.platform.app.InstrumentationRegistry
 import com.mopanesystems.myapplication.Builders.ViewBuilder
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
-import org.junit.Before
 
 /**
  * Example local unit test, which will execute on the development machine (host).

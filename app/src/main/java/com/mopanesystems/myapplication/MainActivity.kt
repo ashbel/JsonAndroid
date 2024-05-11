@@ -1,33 +1,24 @@
 package com.mopanesystems.myapplication
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.text.InputType
-import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
-import com.mopanesystems.myapplication.Adapters.CustomAdapter
 import com.mopanesystems.myapplication.Builders.ViewBuilder
-import com.mopanesystems.myapplication.Models.Fields
 import com.mopanesystems.myapplication.Models.Form
-import java.io.File
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,9 +33,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val formName = findViewById<TextView>(R.id.form_name)
         val jsonString = assets.open("data.json").bufferedReader().use { it.readText() }
         val form = Gson().fromJson(jsonString, Form :: class.java)
         val fields = form.steps[0].fields
+        formName.text = form.form
         var builder = ViewBuilder(this)
         for (field in fields) {
             when (field.type) {
@@ -82,10 +75,6 @@ class MainActivity : AppCompatActivity() {
         linearLayout?.addView(btn)
     }
 
-
-
-
-
     private fun getValues(): HashMap<String, String> {
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
         val values = HashMap<String, String>()
@@ -94,10 +83,12 @@ class MainActivity : AppCompatActivity() {
                 is TextInputLayout -> {
                     val innerLayout = view.getChildAt(0) as FrameLayout
                     val editText = innerLayout.getChildAt(0) as TextInputEditText
+                    if(editText.text.toString().isNotEmpty())
                     values[view.tag as String] = editText.text.toString()
                 }
 
                 is Spinner -> {
+                    if(view.selectedItem != null || view.selectedItem.toString().isNotEmpty())
                     values[view.tag as String] = view.selectedItem.toString()
                 }
 
