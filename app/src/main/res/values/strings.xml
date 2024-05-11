@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="you_selected">You Selected</string>
+    <string name="black">Black\n</string>
+    <string name="white">White</string>
+    <string name="blue">Blue</string>
+</resources>
