@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.mopanesystems.myapplication.Builders.ViewBuilder
 import com.mopanesystems.myapplication.Models.Form
-import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -74,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         }
         linearLayout?.addView(btn)
     }
-
     private fun getValues(): HashMap<String, String> {
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
         val values = HashMap<String, String>()
