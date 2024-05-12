@@ -3,6 +3,7 @@ package com.mopanesystems.myapplication
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -109,6 +110,11 @@ class LocationActivity : AppCompatActivity() {
                     linearLayout.addView(textView)
                 }
             }
+        }
+
+        val previousButton = findViewById<Button>(R.id.previousButton)
+        previousButton.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 

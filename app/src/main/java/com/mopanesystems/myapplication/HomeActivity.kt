@@ -84,6 +84,16 @@ class HomeActivity : AppCompatActivity() {
             imageType = "client"
             showPictureDialog()
         }
+
+        val nextButton = findViewById<Button>(R.id.nextButtonTwo)
+        val previousButton = findViewById<Button>(R.id.previousButtonTwo)
+
+        nextButton.setOnClickListener {
+            startActivity(Intent(this, LocationActivity::class.java))
+        }
+        previousButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
     private fun verifyStoragePermissions(activity: Activity?) {
         val permission = ActivityCompat.checkSelfPermission(

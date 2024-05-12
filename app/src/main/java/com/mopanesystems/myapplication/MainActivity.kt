@@ -1,5 +1,6 @@
 package com.mopanesystems.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
@@ -74,6 +75,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         linearLayout?.addView(btn)
+        val nextButton = findViewById<Button>(R.id.nextButton)
+        nextButton.setOnClickListener {
+       startActivity(Intent(this, HomeActivity::class.java))
+        }
     }
     private fun getValues(): HashMap<String, String> {
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
